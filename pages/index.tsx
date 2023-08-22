@@ -4,11 +4,12 @@ import { ImageApp } from "@/components/Image";
 import Link from "next/link";
 import styles from "@/pages/index.module.css";
 import { Loading } from "@/components/Loading";
+import { Error } from "@/components/Error";
 
 export default function Home() {
   const { data, isError, isLoading } = useGetAllMoviesQuery();
 
-  if (isError) return <p>Error</p>;
+  if (isError) return <Error />;
   if (isLoading) return <Loading />;
 
   return (

@@ -6,6 +6,7 @@ import { Chip, Container, Grid, Rating, Typography } from "@mui/material";
 import { LinkApp } from "@/components/Link";
 import { Loading } from "@/components/Loading";
 import styles from "./movie.module.css";
+import { Error } from "@/components/Error";
 
 type SkipProps = {
   action: boolean;
@@ -50,7 +51,7 @@ export default function Movie() {
   const spoken_lang = data?.spoken_languages;
   const status = data?.status;
 
-  if (isError) return <p>Error</p>;
+  if (isError) return <Error />;
   if (isLoading) return <Loading />;
 
   return (
