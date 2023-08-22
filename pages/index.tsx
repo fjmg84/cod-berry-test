@@ -1,10 +1,10 @@
 import { useGetAllMoviesQuery } from "@/redux/queries/movies";
+import Link from "next/link";
 import { Container, Grid, Typography } from "@mui/material";
 import { ImageApp } from "@/components/Image";
-import Link from "next/link";
-import styles from "@/pages/index.module.css";
 import { Loading } from "@/components/Loading";
 import { Error } from "@/components/Error";
+import styles from "@/pages/index.module.css";
 
 export default function Home() {
   const { data, isError, isLoading } = useGetAllMoviesQuery();
