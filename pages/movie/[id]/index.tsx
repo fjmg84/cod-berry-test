@@ -2,18 +2,10 @@ import { useEffect, useState } from "react";
 import { ImageApp } from "@/components/Image";
 import { useGetMovieByIdQuery } from "@/redux/queries/movies";
 import { useSearchParams } from "next/navigation";
-
-import {
-  Chip,
-  CircularProgress,
-  Container,
-  Grid,
-  Rating,
-  Typography,
-} from "@mui/material";
+import { Chip, Container, Grid, Rating, Typography } from "@mui/material";
 import { LinkApp } from "@/components/Link";
-import styles from "./movie.module.css";
 import { Loading } from "@/components/Loading";
+import styles from "./movie.module.css";
 
 type SkipProps = {
   action: boolean;
@@ -64,25 +56,48 @@ export default function Movie() {
   return (
     <>
       <header>
-        <Grid container spacing={2}>
-          <Grid item md={2} sm={12} xs={12}>
-            <LinkApp
-              path="/"
-              customStyles={styles.go__to__back}
-              text="Go to back"
-            />
+        <Container className={styles.container}>
+          <Grid container rowGap={{ sm: 4, xs: 4 }}>
+            <Grid
+              item
+              md={4}
+              sm={12}
+              xs={12}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0",
+              }}
+            >
+              <LinkApp
+                path="/"
+                customStyles={styles.go__to__back}
+                text="Go to back"
+              />
+            </Grid>
+            <Grid
+              item
+              md={8}
+              sm={12}
+              xs={12}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0",
+              }}
+            >
+              <Typography variant="h2">{original_title}</Typography>
+            </Grid>
           </Grid>
-          <Grid item md={12} sm={12} xs={12}>
-            <Typography variant="h2">{original_title}</Typography>
-          </Grid>
-        </Grid>
+        </Container>
       </header>
 
       <main>
-        <section></section>
         <section>
           <Container className={styles.container}>
-            <Grid container className={styles.center__view}>
+            <Grid container rowGap={2} className={styles.center__view}>
               <Grid item md={4} sm={4} xs={4}>
                 <Grid container rowGap={2}>
                   <Grid
@@ -121,12 +136,19 @@ export default function Movie() {
                   <Typography variant="h6">
                     {overview}
 
-                    <Grid container columnGap={2}>
+                    <Grid
+                      container
+                      columnGap={2}
+                      style={{ alignItems: "center" }}
+                    >
                       <ul>
                         {production_countries?.map(({ name }, index) => {
                           return (
-                            <li key={index} style={{ fontSize: "0.9rem" }}>
-                              {name}
+                            <li
+                              key={index}
+                              style={{ fontSize: "0.9rem", marginRight: "5px" }}
+                            >
+                              <p>{name}</p>
                             </li>
                           );
                         })}
@@ -189,7 +211,7 @@ export default function Movie() {
                         customStyles={styles.link}
                         target="_blank"
                         text="Let's see it"
-                      ></LinkApp>
+                      />
                     )}
                   </Grid>
                 </Grid>
