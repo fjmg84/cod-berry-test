@@ -1,0 +1,40 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto";
+  font-weight: 300;
+  background: #c4c4c4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 4em;
+  font-weight: 900;
+}
+
+section {
+  margin: 2%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  text-transform: capitalize;
+}

@@ -1,0 +1,74 @@
+.container {
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container ul {
+  list-style: none;
+}
+
+.center__view {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+}
+
+.poster {
+  height: 100%;
+  max-width: 300px;
+  width: 100%;
+}
+
+.logo_company {
+  height: 100%;
+  width: 45px;
+}
+
+.chips {
+  display: flex;
+  gap: 10px;
+}
+
+.link {
+  color: #333;
+  margin: 20px 0;
+  text-decoration: none;
+}
+
+.link span {
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: all 0.5s ease;
+}
+
+.link span:hover {
+  background-color: #333;
+  color: white;
+}
+
+.go__to__back {
+  color: white;
+  text-decoration: none;
+}
+
+.go__to__back span {
+  background-color: #333;
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.go__to__back span:hover {
+  background-color: transparent;
+  color: #333;
+}
+
+.table {
+  align-items: flex-end;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
