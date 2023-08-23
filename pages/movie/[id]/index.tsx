@@ -2,11 +2,16 @@ import { useEffect, useState } from "react";
 import { ImageApp } from "@/components/Image";
 import { useGetMovieByIdQuery } from "@/redux/queries/movies";
 import { useSearchParams } from "next/navigation";
-import { Chip, Container, Grid, Rating, Typography } from "@mui/material";
+
+import Chip from "@mui/material/Chip";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import { LinkApp } from "@/components/Link";
 import { Loading } from "@/components/Loading";
 import styles from "./movie.module.css";
 import { Error } from "@/components/Error";
+import { RatingApp } from "@/components/Rating";
 
 type SkipProps = {
   action: boolean;
@@ -17,7 +22,6 @@ export default function Movie() {
     action: true,
     data: "",
   });
-  const [rating, setRating] = useState<number>(0);
 
   const search = useSearchParams();
   const movieId = search.get("id");
@@ -34,10 +38,6 @@ export default function Movie() {
       });
   }, [movieId]);
 
-  useEffect(() => {
-    if (data?.vote_average) setRating(data?.vote_average);
-  }, [data]);
-
   const poster_path = data?.poster_path;
   const backdrop_path = data?.backdrop_path;
   const homepage = data?.homepage;
@@ -50,6 +50,7 @@ export default function Movie() {
   const runtime = data?.runtime;
   const spoken_lang = data?.spoken_languages;
   const status = data?.status;
+  const rating = data?.vote_average;
 
   if (isError) return <Error />;
   if (isLoading) return <Loading />;
@@ -166,14 +167,7 @@ export default function Movie() {
                     </Grid>
                   </Typography>
 
-                  <Rating
-                    name="read-only"
-                    style={{ color: "#333" }}
-                    precision={0.5}
-                    value={rating}
-                    max={10}
-                    readOnly
-                  />
+                  <RatingApp value={rating} />
 
                   <ul className={`${styles.chips} ${styles.table}`}>
                     {genres?.map(({ id, name }) => (

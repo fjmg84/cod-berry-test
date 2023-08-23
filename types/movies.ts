@@ -1,3 +1,8 @@
+export interface Filter{
+  page: number;
+  time_window: "day" | "week" | string
+}
+
 export interface AllMovies {
   adult: boolean;
   backdrop_path: string;
